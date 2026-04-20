@@ -1,22 +1,21 @@
-{ pkgs ? import <nixpkgs> {} }:
-
+{pkgs ? import <nixpkgs> {}}:
 pkgs.mkShell {
   buildInputs = with pkgs; [
     # Erlang debugging tools
     erlang
     rebar3
     elixir
-    
+
     # Additional debugging tools
     gdb
     valgrind
     strace
-    
+
     # For BEAM debugging
     pkgs.beam.packages.erlangR28.debugger
     pkgs.beam.packages.erlangR28.observer
   ];
-  
+
   shellHook = ''
     echo "BEAM Debug Environment"
     echo "Available tools:"
